@@ -1,6 +1,6 @@
 <template>
   <div>
-    哈哈哈哈
+    入口文件
   </div>
 </template>
 
