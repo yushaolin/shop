@@ -1,6 +1,6 @@
 <template>
-  <div>
-    入口文件
+  <div class="hellow">
+    测试
   </div>
 </template>
 
