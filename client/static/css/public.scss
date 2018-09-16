@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box
+    font-size： 14px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+}
+li{
+    list-style: none;
+}
+a{
+    cursor: pointer;
+    color: #000;
+    &:hover{
+        color: #000;
+    }
+}
+.container{
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+    min-width: 1226px;
+}
+.flex{
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
