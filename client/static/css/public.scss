@@ -15,6 +15,15 @@ a{
         color: #000;
     }
 }
+.link {
+    padding: 0 5px;
+    cursor: pointer;
+    color: #b0b0b0;
+
+    &:hover {
+        color: #b0b0b0;
+    }
+}
 .container{
     width: 1226px;
     margin-right: auto;

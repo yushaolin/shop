@@ -1,5 +1,5 @@
-import head from './head.vue'
-import login from './login.vue'
+import head from '@/components/common/head.vue'
+import login from '@/components/common/login.vue'
 export default {
   install(Vue) {
     Vue.component('app-head', head);

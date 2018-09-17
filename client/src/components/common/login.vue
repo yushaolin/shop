@@ -1,17 +1,25 @@
 <template>
     <Modal  :value="show" :width="modalConfig.width" :mask-closable='false' @on-cancel='cancel' class-name="vertical-center-modal login-area">
         <div slot="header" class="header">
-            <span class="title">{{type ? '用户注册' : '用户登陆'}}</span>
+            <span class="title">{{showType ? '用户注册' : '用户登陆'}}</span>
         </div>
         <div class="main">
             <div class="form-item">
-                <i-input v-model="userSchema.username" placeholder="请输入用户名"></i-input>
+                <i-input v-model="userSchema.userName" placeholder="请输入用户名"></i-input>
             </div>
             <div class="form-item">
                 <i-input v-model="userSchema.password" placeholder="请输入密码"></i-input>
             </div>
-            <div class="form-item" v-show="type">
+            <div class="form-item" v-show="!showType">
                 <i-input v-model="userSchema.error_password" placeholder="请再次输入密码"></i-input>
+            </div>
+            <div class="form-item">
+                <div class="other-panel" v-show="!showType">
+                    <span class="registe-btn link" @click="changeStatus(1)">立即注册</span>
+                </div>
+                <div class="other-panel" v-show="showType">
+                    <span class="login-btn link" @click="changeStatus(0)">立即登陆</span>
+                </div>
             </div>
         </div>
         <div slot="footer" class="footer">
@@ -23,6 +31,8 @@
 </template>
 <script>
     import getApiInfo from '@/assets/js/apiInformation'
+    import resutlUtil from '@/assets/js/resultUtil'
+    import apiUrl from '@/assets/js/apiUrl'
     // import { drag } from '@/assets/js/util'
     export default{
         name: 'login',
@@ -45,14 +55,35 @@
         },
         data() {
             return {
-                userSchema: getApiInfo('userInfo')
+                userSchema: getApiInfo('userInfo'),
+                showType: this.show
             }
         },
         methods: {
+            changeStatus(type) {
+                this.showType = type;
+            },
+            /**
+             * @param type 0：登陆 1:注册
+             */
+            commit(type) {
+                console.log(1111);
+                let url = apiUrl.userInfo.login;
+                let request = JSON.parse(JSON.stringify(this.userSchema));
+                if (!type) {
+                    delete request.error_password;
+                    resutlUtil.POST(url, request, response => {
+                        console.log(response);
+                    }, error => {
+                        console.wran(error);
+                    })
+                }
+            }
         },
         watch: {
             show(now) {
                 if (now) {
+                    this.changeStatus(now);
                     // this.$nextTick(() => {
                     //     let panel = document.querySelector('.ivu-modal');
                     //     let head = document.querySelector('.ivu-modal-header');
@@ -67,6 +98,10 @@
 .main{
     .form-item{
         margin-bottom: 20px;
+        .other-panel{
+            text-align: right;
+            font-size: 14px;
+        }
     }
 }
 .footer{

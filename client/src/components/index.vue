@@ -1,6 +1,20 @@
 <template>
   <div class="main">
     <app-head></app-head>
+    <div class="site-category container">
+      <ul class="site-category-list">
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+        <li class="category-item"></li>
+      </ul>
+    </div>
   </div>
 </template>
 

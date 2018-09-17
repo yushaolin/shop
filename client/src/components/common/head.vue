@@ -61,14 +61,6 @@ export default {
   .right{
     text-align: right;
   }
-  .link{
-    padding: 0 5px;
-    cursor: pointer;
-    color: #b0b0b0;
-    &:hover{
-      color: #b0b0b0;
-    }
-  }
   .topbar-cart{
     margin-left: 15px;
     a {
