@@ -10,8 +10,12 @@
             <div class="form-item">
                 <i-input v-model="userSchema.password" placeholder="请输入密码"></i-input>
             </div>
-            <div class="form-item" v-show="!showType">
+            <div class="form-item" v-show="showType">
                 <i-input v-model="userSchema.error_password" placeholder="请再次输入密码"></i-input>
+            </div>
+            <div class="form-item verification-wrap flex">
+                <i-input v-model="userSchema.error_password" placeholder="请输入验证码"></i-input>
+                <img src="http://localhost:8080/shop/api/Verification" class="verification">
             </div>
             <div class="form-item">
                 <div class="other-panel" v-show="!showType">
@@ -61,13 +65,12 @@
         },
         methods: {
             changeStatus(type) {
-                this.showType = type;
+                this.showType = type ? true : false;
             },
             /**
              * @param type 0：登陆 1:注册
              */
             commit(type) {
-                console.log(1111);
                 let url = apiUrl.userInfo.login;
                 let request = JSON.parse(JSON.stringify(this.userSchema));
                 if (!type) {
@@ -75,7 +78,7 @@
                     resutlUtil.POST(url, request, response => {
                         console.log(response);
                     }, error => {
-                        console.wran(error);
+                        console.warn(error);
                     })
                 }
             }
@@ -83,7 +86,7 @@
         watch: {
             show(now) {
                 if (now) {
-                    this.changeStatus(now);
+                    this.changeStatus(this.type);
                     // this.$nextTick(() => {
                     //     let panel = document.querySelector('.ivu-modal');
                     //     let head = document.querySelector('.ivu-modal-header');
@@ -101,6 +104,13 @@
         .other-panel{
             text-align: right;
             font-size: 14px;
+        }
+    }
+    .verification-wrap{
+        justify-content: space-around;
+        img{
+            width: 150px;
+            height: 48px;
         }
     }
 }

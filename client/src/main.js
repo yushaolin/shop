@@ -13,6 +13,7 @@ import 'iview/dist/styles/iview.css';
 import '../static/css/public.scss'
 import '../static/css/input.scss'
 import '../static/css/modal.scss'
+import '../static/css/carousel.scss'
 
 Vue.config.productionTip = false
 Vue.use(common)

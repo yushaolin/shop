@@ -3,7 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const url = 'http://localhost:3000/shop/api';
+const url = 'http://localhost:8080/shop/api';
 module.exports = {
   dev: {
     // Paths

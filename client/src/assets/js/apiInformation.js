@@ -3,7 +3,8 @@ const information = {
     userInfo: {
         userName: '',
         password: '',
-        error_password: ''
+        error_password: '',
+        VerificationCode: ''
     }
 }
 function getInfo(params) {

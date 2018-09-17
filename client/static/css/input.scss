@@ -5,4 +5,37 @@
         padding: 13px 16px 13px 14px;
         font-size: 14px;
     }
+    .verification-wrap{
+        .ivu-input {
+          width: 95%;
+        }
+    }
+}
+.search-warp {
+    .ivu-input-group{
+        width: 754px;
+        height: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        .ivu-input{
+            height: 40px;
+            border: 1px solid #ff4040;
+            font-size: 16px;
+        }
+        .ivu-input-search{
+            background: #ff4040 !important;
+            i {
+                font-size: 22px;
+            }
+            &:hover{
+                border-color: #ff4040 !important;
+            }
+            &:before{
+                width: 0;
+            }
+        }
+        .ivu-input-group-append{
+            border: none;
+        }
+    }
 }
