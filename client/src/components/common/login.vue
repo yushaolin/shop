@@ -14,15 +14,15 @@
                 <i-input v-model="userSchema.error_password" placeholder="请再次输入密码"></i-input>
             </div>
             <div class="form-item verification-wrap flex">
-                <i-input v-model="userSchema.error_password" placeholder="请输入验证码"></i-input>
+                <i-input v-model="userSchema.VerificationCode" placeholder="请输入验证码"></i-input>
                 <img src="http://localhost:8080/shop/api/Verification" class="verification">
             </div>
             <div class="form-item">
                 <div class="other-panel" v-show="!showType">
-                    <span class="registe-btn link" @click="changeStatus(1)">立即注册</span>
+                    <span class="registe-btn link" @click="changeStatus(true)">立即注册</span>
                 </div>
                 <div class="other-panel" v-show="showType">
-                    <span class="login-btn link" @click="changeStatus(0)">立即登陆</span>
+                    <span class="login-btn link" @click="changeStatus(false)">立即登陆</span>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
         },
         methods: {
             changeStatus(type) {
-                this.showType = type ? true : false;
+                this.showType = type;
             },
             /**
              * @param type 0：登陆 1:注册
