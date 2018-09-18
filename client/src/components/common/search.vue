@@ -1,6 +1,6 @@
 <template>
     <div class="search-warp">
-        <i-input search enter-button placeholder="Enter something..." v-value="serach_value"/>
+        <i-input search enter-button placeholder="Enter something..." v-model="serach_value"/>
     </div>
 </template>
 <script>

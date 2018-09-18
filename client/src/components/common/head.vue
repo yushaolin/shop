@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'head',
+  name: 'headNav',
   data () {
     return {
       modalShow: false,
