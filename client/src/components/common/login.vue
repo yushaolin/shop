@@ -15,7 +15,7 @@
             </div>
             <div class="form-item verification-wrap flex">
                 <i-input v-model="userSchema.VerificationCode" placeholder="请输入验证码"></i-input>
-                <img src="http://localhost:8080/shop/api/Verification" class="verification">
+                <img :src="verificationUrl" class="verification" @click="getVerfiction">
             </div>
             <div class="form-item">
                 <div class="other-panel" v-show="!showType">
@@ -60,7 +60,8 @@
         data() {
             return {
                 userSchema: getApiInfo('userInfo'),
-                showType: this.show
+                showType: this.show,
+                verificationUrl: ''
             }
         },
         methods: {
@@ -76,17 +77,27 @@
                 if (!type) {
                     delete request.error_password;
                     resutlUtil.POST(url, request, response => {
-                        console.log(response);
+                        console.log(response.data);
                     }, error => {
                         console.warn(error);
                     })
                 }
+            },
+            // 获取验证码
+            getVerfiction() {
+                let url = apiUrl.userInfo.verification
+                resutlUtil.GET(url, response => {
+                    this.verificationUrl = response.data;
+                }, error => {
+                    console.warn(error);
+                })
             }
         },
         watch: {
             show(now) {
                 if (now) {
                     this.changeStatus(this.type);
+                    this.getVerfiction();
                     // this.$nextTick(() => {
                     //     let panel = document.querySelector('.ivu-modal');
                     //     let head = document.querySelector('.ivu-modal-header');
