@@ -1,10 +1,10 @@
 import { deepCopy } from './util'
 const information = {
     userInfo: {
-        userName: '',
-        password: '',
-        error_password: '',
-        VerificationCode: ''
+        'userName': '',
+        'password': '',
+        'error_password': '',
+        'VerificationCode': ''
     }
 }
 function getInfo(params) {
