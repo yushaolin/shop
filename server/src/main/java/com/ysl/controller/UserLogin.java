@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
 //import org.json.JSONObject;
 
 import com.ysl.service.impl.UserServiceImpl;
@@ -32,7 +30,7 @@ public class UserLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		super.doPost(request, response);
 	}
 
 	/**
@@ -43,6 +41,7 @@ public class UserLogin extends HttpServlet {
 		String password=request.getParameter("password");
 		String VerificationCode=request.getParameter("VerificationCode");
 		String Verification_Code=(String) request.getSession().getAttribute("VerificationCode");
+		response.setCharacterEncoding("UTF-8");
 		if (VerificationCode.equalsIgnoreCase(Verification_Code)) {
 			UserServiceImpl impl=new UserServiceImpl();
 			String result= impl.UserLogin(name, password);

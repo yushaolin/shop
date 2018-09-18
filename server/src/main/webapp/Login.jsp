@@ -11,7 +11,7 @@
 <div>
              <div>登录</div>
          </div>
-         <form action="api/user/login">
+         <form action="api/user/login" method="post">
              <div>
                  <div>
                      <label>用户名:</label>

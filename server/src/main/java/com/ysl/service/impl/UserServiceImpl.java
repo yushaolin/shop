@@ -7,7 +7,6 @@ import ysl.com.Beans.User;
 
 public class UserServiceImpl implements UserService {
 
-	@Override
 	public String UserLogin(String username, String password) {
 		// TODO Auto-generated method stub
 		UserDaoImpl daoImpl=new UserDaoImpl();
@@ -20,7 +19,6 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	@Override
 	public void UserRegister(String username, String password, String realname, String tel, String address, String zip,
 			String email) {
 		// TODO Auto-generated method stub
