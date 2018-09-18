@@ -12,6 +12,9 @@ export function getWindowInfo() {
         leftPos: (typeof window.screenTop === 'number') ? window.screenTop : window.screenY //浏览器距离屏幕顶部距离
     }
 }
+export function stringify(v) {
+    return JSON.stringify(v);
+}
 export function drag(children, parend) {
     startDrag(children, parend);
 }

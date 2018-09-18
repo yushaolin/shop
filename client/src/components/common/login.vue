@@ -37,7 +37,7 @@
     import getApiInfo from '@/assets/js/apiInformation'
     import resutlUtil from '@/assets/js/resultUtil'
     import apiUrl from '@/assets/js/apiUrl'
-    // import { drag } from '@/assets/js/util'
+    import { stringify } from '@/assets/js/util'
     export default{
         name: 'login',
         props: {
@@ -61,7 +61,7 @@
             return {
                 userSchema: getApiInfo('userInfo'),
                 showType: this.show,
-                verificationUrl: ''
+                verificationUrl: apiUrl.userInfo.verification
             }
         },
         methods: {
@@ -76,7 +76,16 @@
                 let request = JSON.parse(JSON.stringify(this.userSchema));
                 if (!type) {
                     delete request.error_password;
+                    request = stringify(request);
                     resutlUtil.POST(url, request, response => {
+                        if (response.body.result === 'success' && response.status === 200) {
+
+                        }
+                    }, error => {
+                        console.warn(error);
+                    })
+                } else {
+                    resutlUtil.POST(url, JSON.stringify(request), response => {
                         console.log(response.data);
                     }, error => {
                         console.warn(error);
@@ -85,19 +94,14 @@
             },
             // 获取验证码
             getVerfiction() {
-                let url = apiUrl.userInfo.verification
-                resutlUtil.GET(url, response => {
-                    this.verificationUrl = response.data;
-                }, error => {
-                    console.warn(error);
-                })
+                let url = apiUrl.userInfo.verification;
+                this.verificationUrl = url + '?' + Math.random();
             }
         },
         watch: {
             show(now) {
                 if (now) {
                     this.changeStatus(this.type);
-                    this.getVerfiction();
                     // this.$nextTick(() => {
                     //     let panel = document.querySelector('.ivu-modal');
                     //     let head = document.querySelector('.ivu-modal-header');
